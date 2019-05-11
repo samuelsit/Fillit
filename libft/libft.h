@@ -16,6 +16,10 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# define BUFF_SIZE 10
 
 typedef	struct		s_list
 {
@@ -89,5 +93,6 @@ char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *haystack, const char *needle);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
+int				get_next_line(const int fd, char **line);
 
 #endif

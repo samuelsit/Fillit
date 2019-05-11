@@ -73,7 +73,8 @@ SRC	=	ft_convert.c	\
 		ft_lstdel.c		\
 		ft_lstdelone.c	\
 		ft_lstiter.c	\
-		ft_lstmap.c
+		ft_lstmap.c	\
+		get_next_line.c
 
 AC	=	ar rc
 
