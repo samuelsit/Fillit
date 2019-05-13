@@ -94,5 +94,6 @@ char				*ft_strstr(const char *haystack, const char *needle);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 int				get_next_line(const int fd, char **line);
+char				*ft_strfjoin(char *s1, char const *s2);
 
 #endif

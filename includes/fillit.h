@@ -13,4 +13,9 @@ void    fillit(char *file);
 int     nbTetriminos(char *file);
 int     readTetriminos(int fd);
 
+typedef struct	s_tetris
+{
+	char **elem;
+}		t_tetris;
+
 #endif

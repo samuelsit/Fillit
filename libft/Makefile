@@ -39,6 +39,7 @@ SRC	=	ft_convert.c	\
 		ft_strtrim.c	\
 		ft_strsplit.c	\
 		ft_strjoin.c	\
+		ft_strfjoin.c	\
 		ft_strjoin_free.c	\
 		ft_strsub.c		\
 		ft_strmap.c		\

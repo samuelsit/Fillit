@@ -2,7 +2,7 @@ SRC	=	srcs/main.c		\
 		srcs/fillit.c		\
 		srcs/readTetriminos.c
 
-CC	=	gcc
+CC	=	gcc -g3
 
 NAME	=	fillit
 
