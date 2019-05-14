@@ -8,6 +8,8 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
+# define EMPTY '.'
+# define FILLED '#'
 
 int	check_tet(int fd);
 int     nbTetriminos(char *file);

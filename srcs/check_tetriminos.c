@@ -9,7 +9,7 @@ int     check_char(char *str, int l)
         {
                 while (str[i] != '\0')
                 {
-                        if (str[i] != '.' && str[i] != '#')
+                        if (str[i] != EMPTY && str[i] != FILLED)
                                 return (0);
                         i++;
                 }
