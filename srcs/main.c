@@ -91,16 +91,16 @@ int     main(int argc, char **argv)
         if (argc != 2)
         {
                 ft_putstr("usage: ./fillit <file>\n");
-                exit(0);
+                return (0);
         }
 	if ((fdcheck = open(argv[1], O_RDONLY)) < 0)
-		exit(0);
+		return (0);
 	if (check_tet(fdcheck))
 	{
 		if ((fd = open(argv[1], O_RDONLY)) < 0)
-			exit(0);
+			return (0);
 		build_list(fd, &list);
 		print_list(list);
 	}
-        exit(0);
+        return (0);
 }
