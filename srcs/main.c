@@ -38,9 +38,10 @@ t_tetris	*new_tetris()
 	{
 		if (!(tetris->elem[i] = malloc(sizeof(char) * (SIZE_TETRIS + 1))))
 			exit(0);
+		tetris->elem[i][SIZE_TETRIS] = '\0';
 		i++;
 	}
-
+	tetris->elem[SIZE_TETRIS] = 0;
 	return (tetris);
 }
 
