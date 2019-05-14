@@ -1,5 +1,6 @@
 SRC	=	srcs/main.c		\
 		srcs/check_tetriminos.c		\
+		srcs/check_tetriminos2.c
 
 CC	=	gcc -g3
 

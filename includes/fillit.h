@@ -14,6 +14,8 @@
 int	check_tet(int fd);
 int     nbTetriminos(char *file);
 int     readTetriminos(int fd);
+void	four_filled(char **tet);
+int		apply_on_list(t_list	*list);
 
 typedef struct	s_tetris
 {

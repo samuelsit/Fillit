@@ -60,3 +60,16 @@ int     check_tet(int fd)
                 return (0);
         return (1);
 }
+
+int	apply_on_list(t_list *list)
+{
+	t_tetris *tetris;
+
+	while(list)
+	{
+		tetris = list->content;
+		four_filled(tetris->elem);
+		list = list->next;
+	}
+	return (0);
+}
