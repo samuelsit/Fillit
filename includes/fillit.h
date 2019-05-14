@@ -10,6 +10,7 @@
 # include <unistd.h>
 # define EMPTY '.'
 # define FILLED '#'
+# define SIZE_TETRIS	4
 
 int	check_tet(int fd);
 int     nbTetriminos(char *file);
