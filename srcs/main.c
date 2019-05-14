@@ -97,10 +97,11 @@ int     main(int argc, char **argv)
 		return (0);
 	if (!check_tet(fdcheck))
 		return (0);
+	close(fdcheck);
 	if ((fd = open(argv[1], O_RDONLY)) < 0)
 		return (0);
 	build_list(fd, &list);
-	print_list(list);
+	close(fd);
 	apply_on_list(list);
 	print_list(list);
 	return (0);

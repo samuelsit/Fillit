@@ -10,7 +10,40 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include "../includes/fillit.h"
+
+int	cardinal(char **tet, int i, int j)
+{
+	printf("tet[%d][%d] : %c\n", i, j, tet[i][j]);
+	return (1);
+}
+
 void	four_filled(char **tet)
 {
-	tet[0][0] = 'b';
+	int i;
+	int j;
+	int i_filled;
+	int j_filled;
+	int nb_filled;
+
+	i = 0;
+	nb_filled = 0;
+	while (tet[i])
+	{
+		j = 0;
+		while (tet[i][j])
+		{
+			if (tet[i][j] == FILLED)
+			{
+				i_filled = i;
+				j_filled = j;
+				nb_filled++;
+			}
+			j++;
+		}
+		i++;
+	}
+	if (nb_filled != 4 || !cardinal(tet, i_filled, j_filled))
+		exit(0);
 }
