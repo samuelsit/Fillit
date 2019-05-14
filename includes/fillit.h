@@ -9,7 +9,7 @@
 # include <sys/uio.h>
 # include <unistd.h>
 
-void    fillit(char *file);
+int	check_tet(int fd);
 int     nbTetriminos(char *file);
 int     readTetriminos(int fd);
 

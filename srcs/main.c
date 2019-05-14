@@ -1,8 +1,3 @@
-
-
-
-
-
 #include <stdio.h>		// A ENLEVER
 #include "../includes/fillit.h"
 #define SIZE_TETRIS	4
@@ -89,19 +84,23 @@ void	build_list(int fd, t_list **list)
 int     main(int argc, char **argv)
 {
 	t_list *list;
+	int fdcheck;
 	int fd;
 
-	fd = 0;
 	list = NULL;
         if (argc != 2)
         {
                 ft_putstr("usage: ./fillit <file>\n");
-                return (0);
+                exit(0);
         }
-	if ((fd = open(argv[1], O_RDONLY)) < 0)
-		return (0);
-	build_list(fd, &list);
-	print_list(list);
-        //fillit(argv[1]);
-        return 0;
+	if ((fdcheck = open(argv[1], O_RDONLY)) < 0)
+		exit(0);
+	if (check_tet(fdcheck))
+	{
+		if ((fd = open(argv[1], O_RDONLY)) < 0)
+			exit(0);
+		build_list(fd, &list);
+		print_list(list);
+	}
+        exit(0);
 }
