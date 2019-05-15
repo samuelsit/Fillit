@@ -6,7 +6,7 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 15:00:42 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/05/15 15:00:50 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/05/15 15:05:29 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,19 @@ void	print_list(t_list *list)
 	t_tetris *tetris;
 	int i;
 
-	printf("PRINT\n");
 	i = 0;
 	tetris = NULL;
+	ft_putstr("PRINT\n");
 	while (list)
 	{
 		while (i < SIZE_TETRIS)
 		{
 			tetris = list->content;
-			printf("%s\n", tetris->elem[i]);
+			ft_putstr(tetris->elem[i]);
+			ft_putchar('\n');
 			i++;
 		}
-		printf("\n");
+		ft_putchar('\n');
 		list = list->next;
 		i = 0;
 	}
@@ -99,11 +100,11 @@ int     main(int argc, char **argv)
 	int fd;
 
 	list = NULL;
-        if (argc != 2)
-        {
-                ft_putstr("usage: ./fillit <file>\n");
-                return (0);
-        }
+	if (argc != 2)
+	{
+		ft_putstr("usage: ./fillit <file>\n");
+		return (0);
+	}
 	if ((fdcheck = open(argv[1], O_RDONLY)) < 0)
 		return (0);
 	if (!check_tet(fdcheck))
