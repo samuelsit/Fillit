@@ -64,12 +64,17 @@ int     check_tet(int fd)
 int	apply_on_list(t_list *list)
 {
 	t_tetris *tetris;
+	int nb_tetris;
 
+	nb_tetris = 0;
 	while (list)
 	{
 		tetris = list->content;
 		four_filled(tetris->elem);
 		list = list->next;
+		nb_tetris++;
 	}
+	if (nb_tetris > 26)
+		put_error();
 	return (0);
 }
