@@ -50,14 +50,14 @@ int     check_tet(int fd)
         while ((ret = get_next_line(fd, &line_tet)) > 0)
         {
                 if (!(check_char(line_tet, l)))
-                        return (0);
+                        put_error();
                 c = ft_strlen(line_tet);
                 if (!(column(c, l)))
-                        return (0);
+                        put_error();
                 l++;
         }
         if (!(line(l)))
-                return (0);
+                put_error();
         return (1);
 }
 

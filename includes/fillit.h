@@ -12,7 +12,8 @@
 # define FILLED '#'
 # define SIZE_TETRIS	4
 
-int	check_tet(int fd);
+void	put_error();
+int		check_tet(int fd);
 int     nbTetriminos(char *file);
 int     readTetriminos(int fd);
 void	four_filled(char **tet);
