@@ -6,32 +6,23 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 16:09:57 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/05/14 16:11:07 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/05/15 14:15:08 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../includes/fillit.h"
 
-/*
-int	cardinal(char **tet, int i, int j)
-{
-	printf("tet[%d][%d] : %c\n", i, j, tet[i][j]);
-	return (1);
-}
-*/
-
-int	check_filled(char **tet, int i, int j)
+int	check_filled(char **tet, int i, int j, int occurence)
 {
 	if (j + 1 < SIZE_TETRIS && tet[i][j + 1] == FILLED)
-		return (1);
+		occurence++;
 	if (j - 1 >= 0 && tet[i][j - 1] == FILLED)
-		return (1);
+		occurence++;
 	if (i + 1 < SIZE_TETRIS && tet[i + 1][j] == FILLED)
-		return (1);
+		occurence++;
 	if (i - 1 >= 0 && tet[i - 1][j] == FILLED)
-		return (1);
-	return (0);
+		occurence++;
+	return (occurence);
 }
 
 void	four_filled(char **tet)
@@ -39,9 +30,11 @@ void	four_filled(char **tet)
 	int i;
 	int j;
 	int nb_filled;
+	int occurence;
 
 	i = 0;
 	nb_filled = 0;
+	occurence = 0;
 	while (tet[i])
 	{
 		j = 0;
@@ -49,14 +42,16 @@ void	four_filled(char **tet)
 		{
 			if (tet[i][j] == FILLED)
 			{
-				if (!check_filled(tet, i, j))
-					exit(0);
+				occurence = check_filled(tet, i, j, occurence);
 				nb_filled++;
 			}
 			j++;
 		}
 		i++;
 	}
-	if (nb_filled != 4)
-		exit(0);;
+	if ((occurence != 6 && occurence != 8) || nb_filled != 4)
+	{
+		ft_putstr("error\n");
+		exit(0);
+	}
 }

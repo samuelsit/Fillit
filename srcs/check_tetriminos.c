@@ -65,7 +65,7 @@ int	apply_on_list(t_list *list)
 {
 	t_tetris *tetris;
 
-	while(list)
+	while (list)
 	{
 		tetris = list->content;
 		four_filled(tetris->elem);
