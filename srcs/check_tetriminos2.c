@@ -6,11 +6,17 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 16:09:57 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/05/15 14:15:08 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/05/15 14:18:22 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
+
+void	put_error()
+{
+	ft_putstr("error\n");
+	exit(0);
+}
 
 int	check_filled(char **tet, int i, int j, int occurence)
 {
@@ -50,8 +56,5 @@ void	four_filled(char **tet)
 		i++;
 	}
 	if ((occurence != 6 && occurence != 8) || nb_filled != 4)
-	{
-		ft_putstr("error\n");
-		exit(0);
-	}
+		put_error();
 }
