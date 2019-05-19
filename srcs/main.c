@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
+#include <stdio.h>
 
 void	print_list(t_list *list)
 {
@@ -98,6 +99,7 @@ int     main(int argc, char **argv)
 	t_list *list;
 	int fdcheck;
 	int fd;
+	int size_map;
 
 	list = NULL;
 	if (argc != 2)
@@ -114,7 +116,8 @@ int     main(int argc, char **argv)
 		return (0);
 	build_list(fd, &list);
 	close(fd);
-	apply_on_list(list);
+	size_map = ft_sqrt(apply_on_list(list) * 4);
+	printf("sizemap = %d\n", size_map);
 	print_list(list);
 	return (0);
 }

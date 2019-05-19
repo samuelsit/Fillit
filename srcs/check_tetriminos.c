@@ -88,5 +88,5 @@ int	apply_on_list(t_list *list)
 	}
 	if (nb_tetris > 26)
 		put_error();
-	return (0);
+	return (nb_tetris);
 }
