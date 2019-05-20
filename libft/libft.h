@@ -6,7 +6,7 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:50:02 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/04/14 20:50:35 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/05/20 17:28:05 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
-int				ft_lstsize(t_list *lst);
+int					ft_lstsize(t_list *lst);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_putchar(char c);
@@ -94,7 +94,7 @@ char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *haystack, const char *needle);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
-int				get_next_line(const int fd, char **line);
+int					get_next_line(const int fd, char **line);
 char				*ft_strfjoin(char *s1, char const *s2);
 
 #endif

@@ -6,19 +6,19 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 16:09:57 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/05/15 15:00:34 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/05/20 17:20:01 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-void	put_error()
+void	put_error(void)
 {
 	ft_putstr("error\n");
 	exit(0);
 }
 
-int	check_filled(char **tet, int i, int j, int occurence)
+int		check_filled(char **tet, int i, int j, int occurence)
 {
 	if (j + 1 < SIZE_TETRIS && tet[i][j + 1] == FILLED)
 		occurence++;
@@ -33,10 +33,10 @@ int	check_filled(char **tet, int i, int j, int occurence)
 
 void	four_filled(char **tet)
 {
-	int i;
-	int j;
-	int nb_filled;
-	int occurence;
+	int		i;
+	int		j;
+	int		nb_filled;
+	int		occurence;
 
 	i = 0;
 	nb_filled = 0;

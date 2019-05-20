@@ -6,17 +6,16 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 15:00:42 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/05/15 15:05:29 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/05/20 17:24:00 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-#include <stdio.h>
 
-void	print_list(t_list *list)
+void		print_list(t_list *list)
 {
-	t_tetris *tetris;
-	int i;
+	t_tetris	*tetris;
+	int			i;
 
 	i = 0;
 	tetris = NULL;
@@ -36,10 +35,10 @@ void	print_list(t_list *list)
 	}
 }
 
-t_tetris	*new_tetris()
+t_tetris	*new_tetris(void)
 {
-	t_tetris *tetris;
-	int i;
+	t_tetris	*tetris;
+	int			i;
 
 	i = 0;
 	if (!(tetris = malloc(sizeof(*tetris))))
@@ -57,17 +56,17 @@ t_tetris	*new_tetris()
 	return (tetris);
 }
 
-void	build_list(int fd, t_list **list)
+void		build_list(int fd, t_list **list)
 {
 	t_list		*tmp;
 	t_tetris	*tetris;
-	char 		*line;
-	int		ret;
-	int 		i;
+	char		*line;
+	int			ret;
+	int			i;
 
 	i = 0;
 	tetris = new_tetris();
-	while((ret = get_next_line(fd, &line)) >= 0)
+	while ((ret = get_next_line(fd, &line)) > 0)
 	{
 		if (*line && ret == 1)
 		{
@@ -94,12 +93,12 @@ void	build_list(int fd, t_list **list)
 	}
 }
 
-int     main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
-	t_list *list;
-	int fdcheck;
-	int fd;
-	int size_map;
+	t_list	*list;
+	int		fdcheck;
+	int		fd;
+	float	size_map;
 
 	list = NULL;
 	if (argc != 2)
@@ -117,7 +116,6 @@ int     main(int argc, char **argv)
 	build_list(fd, &list);
 	close(fd);
 	size_map = ft_sqrt(apply_on_list(list) * 4);
-	printf("sizemap = %d\n", size_map);
 	print_list(list);
 	return (0);
 }

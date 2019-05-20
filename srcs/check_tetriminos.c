@@ -6,13 +6,13 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 15:00:04 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/05/15 15:00:27 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/05/20 17:19:00 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-int     check_char(char *str, int l)
+int		check_char(char *str, int l)
 {
 	int i;
 
@@ -29,7 +29,7 @@ int     check_char(char *str, int l)
 	return (1);
 }
 
-int     column(int c, int l)
+int		column(int c, int l)
 {
 	if ((l % 5) != 0)
 	{
@@ -44,19 +44,19 @@ int     column(int c, int l)
 	return (1);
 }
 
-int     line(int l)
+int		line(int l)
 {
 	if ((l % 5) == 0)
 		return (1);
 	return (0);
 }
 
-int     check_tet(int fd)
+int		check_tet(int fd)
 {
-	int     ret;
-	int     c;
-	int     l;
-	char    *line_tet;
+	int		ret;
+	int		c;
+	int		l;
+	char	*line_tet;
 
 	l = 1;
 	while ((ret = get_next_line(fd, &line_tet)) > 0)
@@ -73,10 +73,10 @@ int     check_tet(int fd)
 	return (1);
 }
 
-int	apply_on_list(t_list *list)
+int		apply_on_list(t_list *list)
 {
-	t_tetris *tetris;
-	int nb_tetris;
+	t_tetris	*tetris;
+	int			nb_tetris;
 
 	nb_tetris = 0;
 	while (list)

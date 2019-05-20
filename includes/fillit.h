@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fillit.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/20 17:24:49 by ssitruk           #+#    #+#             */
+/*   Updated: 2019/05/20 17:26:56 by ssitruk          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FILLIT_H
 # define FILLIT_H
 
@@ -12,16 +24,16 @@
 # define FILLED '#'
 # define SIZE_TETRIS	4
 
-void	put_error();
-int		check_tet(int fd);
-int     nbTetriminos(char *file);
-int     readTetriminos(int fd);
-void	four_filled(char **tet);
-int		apply_on_list(t_list	*list);
+void			put_error(void);
+int				check_tet(int fd);
+int				nb_tetriminos(char *file);
+int				read_tetriminos(int fd);
+void			four_filled(char **tet);
+int				apply_on_list(t_list *list);
 
 typedef struct	s_tetris
 {
 	char **elem;
-}		t_tetris;
+}				t_tetris;
 
 #endif
