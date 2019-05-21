@@ -6,11 +6,12 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 15:00:42 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/05/20 17:24:00 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/05/21 10:48:47 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
+#include <stdio.h>
 
 void		print_list(t_list *list)
 {
@@ -66,7 +67,7 @@ void		build_list(int fd, t_list **list)
 
 	i = 0;
 	tetris = new_tetris();
-	while ((ret = get_next_line(fd, &line)) > 0)
+	while ((ret = get_next_line(fd, &line)) >= 0)
 	{
 		if (*line && ret == 1)
 		{
@@ -98,7 +99,7 @@ int			main(int argc, char **argv)
 	t_list	*list;
 	int		fdcheck;
 	int		fd;
-	float	size_map;
+	int		size_map;
 
 	list = NULL;
 	if (argc != 2)
@@ -115,7 +116,8 @@ int			main(int argc, char **argv)
 		return (0);
 	build_list(fd, &list);
 	close(fd);
-	size_map = ft_sqrt(apply_on_list(list) * 4);
+	size_map = ft_sqrt(apply_on_list(list) * 4) + 1;
+	printf("%d\n", size_map);
 	print_list(list);
 	return (0);
 }

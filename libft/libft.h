@@ -6,7 +6,7 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:50:02 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/05/20 17:28:05 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/05/21 10:33:27 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef	struct		s_list
 }					t_list;
 
 char				*ft_convert(char *nbr, char *base_from, char *base_to);
-int					ft_sqrt(int nb);
+int					ft_sqrt(float nb);
 int					ft_factorial(int nb);
 int					ft_power(int nb, int power);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
