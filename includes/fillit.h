@@ -6,7 +6,7 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:24:49 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/05/20 17:26:56 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/05/21 13:25:04 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ int				nb_tetriminos(char *file);
 int				read_tetriminos(int fd);
 void			four_filled(char **tet);
 int				apply_on_list(t_list *list);
+char			**malloc_map(int size_map);
+char			**create_map(char **map, int size_map);
+void			print_map(char **map);
 
 typedef struct	s_tetris
 {

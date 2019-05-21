@@ -6,12 +6,11 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 15:00:42 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/05/21 10:48:47 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/05/21 13:27:18 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-#include <stdio.h>
 
 void		print_list(t_list *list)
 {
@@ -100,6 +99,7 @@ int			main(int argc, char **argv)
 	int		fdcheck;
 	int		fd;
 	int		size_map;
+	char	**map;
 
 	list = NULL;
 	if (argc != 2)
@@ -116,8 +116,9 @@ int			main(int argc, char **argv)
 		return (0);
 	build_list(fd, &list);
 	close(fd);
-	size_map = ft_sqrt(apply_on_list(list) * 4) + 1;
-	printf("%d\n", size_map);
-	print_list(list);
+	size_map = ft_sqrt(apply_on_list(list) * 4);
+	map = malloc_map(size_map);
+	print_map(map);
+	//print_list(list);
 	return (0);
 }

@@ -1,6 +1,7 @@
 SRC	=	srcs/main.c		\
 		srcs/check_tetriminos.c		\
-		srcs/check_tetriminos2.c
+		srcs/check_tetriminos2.c	\
+		srcs/create_map.c
 
 CC	=	gcc -g3
 
