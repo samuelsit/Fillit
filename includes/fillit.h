@@ -30,8 +30,8 @@ int				nb_tetriminos(char *file);
 int				read_tetriminos(int fd);
 void			four_filled(char **tet);
 int				apply_on_list(t_list *list);
-char			**malloc_map(int size_map);
-char			**create_map(char **map, int size_map);
+char			**create_map(int size_map);
+char			**init_map(char **map, int size_map);
 void			print_map(char **map);
 
 typedef struct	s_tetris

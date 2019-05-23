@@ -117,8 +117,9 @@ int			main(int argc, char **argv)
 	build_list(fd, &list);
 	close(fd);
 	size_map = ft_sqrt(apply_on_list(list) * 4);
-	map = malloc_map(size_map);
+	map = create_map(size_map);
 	print_map(map);
+	backtrack(list, final_size, map);
 	//print_list(list);
 	return (0);
 }

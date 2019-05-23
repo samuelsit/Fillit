@@ -18,7 +18,6 @@ void	print_map(char **map)
 	int j;
 
 	i = 0;
-	j = 0;
 	while (map[i])
 	{
 		j = 0;
@@ -32,7 +31,7 @@ void	print_map(char **map)
 	}
 }
 
-char	**create_map(char **map, int size_map)
+char	**init_map(char **map, int size_map)
 {
 	int i;
 	int j;
@@ -51,7 +50,7 @@ char	**create_map(char **map, int size_map)
 	return (map);
 }
 
-char	**malloc_map(int size_map)
+char	**create_map(int size_map)
 {
 	char	**map;
 	int		i;
@@ -67,6 +66,6 @@ char	**malloc_map(int size_map)
 		i++;
 	}
 	map[i] = NULL;
-	map = create_map(map, size_map);
+	map = init_map(map, size_map);
 	return (map);
 }
