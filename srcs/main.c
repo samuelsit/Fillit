@@ -19,7 +19,7 @@ void		print_list(t_list *list)
 
 	i = 0;
 	tetris = NULL;
-	ft_putstr("PRINT\n");
+	ft_putstr("\n----------\nPRINT LIST\n----------\n\n");
 	while (list)
 	{
 		while (i < SIZE_TETRIS)
@@ -119,7 +119,8 @@ int			main(int argc, char **argv)
 	size_map = ft_sqrt(apply_on_list(list) * 4);
 	map = create_map(size_map);
 	print_map(map);
-	backtrack(list, final_size, map);
-	//print_list(list);
+	clean_list(list);
+	//backtrack(list, final_size, map);
+	print_list(list);
 	return (0);
 }

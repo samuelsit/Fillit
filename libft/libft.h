@@ -28,6 +28,7 @@ typedef	struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+void				*ft_realloc(void *ptr, size_t len);
 char				*ft_convert(char *nbr, char *base_from, char *base_to);
 int					ft_sqrt(float nb);
 int					ft_factorial(int nb);
