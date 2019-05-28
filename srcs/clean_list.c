@@ -1,50 +1,84 @@
 #include "../includes/fillit.h"
 #include <stdio.h>
 
+int		filled_in_y(char *elem)
+{
+	int x;
+	int nb;
+
+	x = 0;
+	nb = 0;
+	while (elem[x])
+	{
+		if (elem[x] == FILLED)
+			nb++;
+		x++;
+	}
+	return (nb);
+}
+
 int		get_y_min(char **elem)
 {
 	int x;
 	int y;
-	int y_min;
+	int new_y;
 
 	x = 0;
 	y = 0;
-	y_min = 0;
-	while (x < 4)
+	new_y = 0;
+	while (elem[x])
 	{
-		while (elem[x][y] != '#' && elem[x][y] != '\0')
-			y++;
-		if (y == 4)
-			y_min++;
-		else
-			return (y_min);
-		y = 0;
+		new_y = filled_in_y(elem[x]) > new_y ? filled_in_y(elem[x]) : new_y;
 		x++;
 	}
-	return (y_min);
+	return (new_y);
 }
 
 int		get_x_min(char **elem)
 {
 	int x;
 	int y;
-	int x_min;
+	int new_x;
 
 	x = 0;
 	y = 0;
-	x_min = 4;
-	while (x < 4)
+	new_x = 0;
+	while (elem[x])
 	{
-		while (elem[x][y] != '#' && elem[x][y] != '\0')
-			y++;
-		x_min = (y < x_min) ? y : x_min;
 		y = 0;
+		while (elem[x][y])
+		{
+			if (elem[x][y] == FILLED)
+			{
+				new_x++;
+				break;
+			}
+			y++;
+		}
 		x++;
 	}
-	return (x_min);
+	return (new_x);
 }
 
-void			clean_list(t_list *list)
+char		**new_mall(char **elem, int x, int y)
+{
+	int		i;
+	char	**tetri;
+
+	i = 0;
+	if (!(tetri = ft_realloc(elem[i], x)))
+		return (NULL);
+	while (i <= y)
+	{
+		if (!(tetri[i] = ft_realloc(elem[i], y)))
+			return (NULL);
+		free(elem[i]);
+	}
+	free(elem);
+	return (tetri);
+}
+
+t_list		*clean_list(t_list *list)
 {
 	t_tetris	*tetris;
 	int		x;
@@ -59,7 +93,8 @@ void			clean_list(t_list *list)
 		x = get_x_min(tetris->elem);
 		y = get_y_min(tetris->elem);
 		printf("\nx = %d, y = %d\n", x, y);
-		//new_mall(tetris->elem);
+		tetris->elem = new_mall(tetris->elem, x, y);
 		list = list->next;
 	}
+	return (list);
 }

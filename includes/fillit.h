@@ -24,7 +24,7 @@
 # define FILLED '#'
 # define SIZE_TETRIS	4
 
-void			clean_list(t_list *list);
+t_list			*clean_list(t_list *list);
 void			put_error(void);
 int				check_tet(int fd);
 int				nb_tetriminos(char *file);
