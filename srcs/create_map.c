@@ -56,11 +56,11 @@ char	**create_map(int size_map)
 	int		i;
 
 	i = 0;
-	if (!(map = (char **)malloc(sizeof(char *) * size_map + 1)))
+	if (!(map = (char **)malloc(sizeof(char *) * (size_map + 1))))
 		put_error();
 	while (i < size_map)
 	{
-		if (!(map[i] = (char *)malloc(sizeof(char) * size_map + 1)))
+		if (!(map[i] = (char *)malloc(sizeof(char) * (size_map + 1))))
 			put_error();
 		map[i][size_map] = '\0';
 		i++;

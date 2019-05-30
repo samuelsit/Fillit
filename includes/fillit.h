@@ -24,7 +24,7 @@
 # define FILLED '#'
 # define SIZE_TETRIS	4
 
-char   			**filled_new(char **elem, char **new_elem);
+char			**filled_new(char **elem, char **new_elem);
 t_list			*clean_list(t_list *list);
 void			put_error(void);
 int				check_tet(int fd);
@@ -36,9 +36,17 @@ char			**create_map(int size_map);
 char			**init_map(char **map, int size_map);
 void			print_map(char **map);
 
+typedef struct	s_map
+{
+	char	**field;
+	int	size;
+}		t_map;
+
 typedef struct	s_tetris
 {
-	char **elem;
-}				t_tetris;
+	char	**elem;
+	int	width;
+	int	height;
+}		t_tetris;
 
 #endif

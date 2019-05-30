@@ -6,7 +6,6 @@ char    **filled_new(char **elem, char **new_elem)
     int j;
 
     i = 0;
-    j = 0;
     while (new_elem[i])
     {
         j = 0;

@@ -66,13 +66,13 @@ char		**new_malloc(char **elem, int x, int y)
 
 	i = 0;
 	new_elem = NULL;
-	if (!(new_elem = (char **)malloc(sizeof(char*) * (x + 1))))
+	if (!(new_elem = (char **)malloc(sizeof(char*) * (y + 1))))
 		return (NULL);
 	while (i < y)
 	{
-		if (!(new_elem[i] = (char *)malloc(sizeof(char) * (y + 1))))
+		if (!(new_elem[i] = (char *)malloc(sizeof(char) * (x + 1))))
 			return (NULL);
-		new_elem[i][y] = '\0';
+		new_elem[i][x] = '\0';
 		i++;
 	}
 	new_elem[i] = NULL;
