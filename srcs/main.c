@@ -22,9 +22,9 @@ void		print_list(t_list *list)
 	ft_putstr("\n----------\nPRINT LIST\n----------\n\n");
 	while (list)
 	{
-		while (i < SIZE_TETRIS)
+		tetris = list->content;
+		while (tetris->elem[i])
 		{
-			tetris = list->content;
 			ft_putstr(tetris->elem[i]);
 			ft_putchar('\n');
 			i++;
