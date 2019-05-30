@@ -2,7 +2,8 @@ SRC	=	srcs/main.c		\
 		srcs/check_tetriminos.c		\
 		srcs/check_tetriminos2.c	\
 		srcs/create_map.c	\
-		srcs/clean_list.c
+		srcs/clean_list.c	\
+		srcs/clean_list2.c
 
 CC	=	gcc -g3
 
@@ -10,7 +11,7 @@ NAME	=	fillit
 
 LIB	=	-Llibft -lft
 
-CFLAGS	=	-Wall -Wextra -Werror
+#CFLAGS	=	-Wall -Wextra -Werror
 
 RM	=	rm -f
 

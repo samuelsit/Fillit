@@ -24,6 +24,7 @@
 # define FILLED '#'
 # define SIZE_TETRIS	4
 
+char   			**filled_new(char **elem, char **new_elem);
 t_list			*clean_list(t_list *list);
 void			put_error(void);
 int				check_tet(int fd);

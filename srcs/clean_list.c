@@ -1,5 +1,4 @@
 #include "../includes/fillit.h"
-#include <stdio.h>
 
 int		filled_in_y(char *elem)
 {
@@ -17,7 +16,7 @@ int		filled_in_y(char *elem)
 	return (nb);
 }
 
-int		get_y_min(char **elem)
+int		get_y(char **elem)
 {
 	int x;
 	int y;
@@ -34,7 +33,7 @@ int		get_y_min(char **elem)
 	return (new_y);
 }
 
-int		get_x_min(char **elem)
+int		get_x(char **elem)
 {
 	int x;
 	int y;
@@ -60,41 +59,45 @@ int		get_x_min(char **elem)
 	return (new_x);
 }
 
-char		**new_mall(char **elem, int x, int y)
+char		**new_malloc(char **elem, int x, int y)
 {
+	char	**new_elem;
 	int		i;
-	char	**tetri;
 
 	i = 0;
-	if (!(tetri = ft_realloc(elem[i], x)))
+	new_elem = NULL;
+	if (!(new_elem = (char **)malloc(sizeof(char*) * (x + 1))))
 		return (NULL);
-	while (i <= y)
+	while (i < y)
 	{
-		if (!(tetri[i] = ft_realloc(elem[i], y)))
+		if (!(new_elem[i] = (char *)malloc(sizeof(char) * (y + 1))))
 			return (NULL);
-		free(elem[i]);
+		new_elem[i][y] = '\0';
+		i++;
 	}
-	free(elem);
-	return (tetri);
+	new_elem[i] = NULL;
+	new_elem = filled_new(elem, new_elem);
+	return (new_elem);
 }
 
 t_list		*clean_list(t_list *list)
 {
 	t_tetris	*tetris;
-	int		x;
-	int		y;
+	t_list		*tmp;
+	int			x;
+	int			y;
 
 	x = 0;
 	y = 0;
+	tmp = list;
 	tetris = NULL;
-	while (list)
+	while (tmp)
 	{
-		tetris = list->content;
-		x = get_x_min(tetris->elem);
-		y = get_y_min(tetris->elem);
-		printf("\nx = %d, y = %d\n", x, y);
-		tetris->elem = new_mall(tetris->elem, x, y);
-		list = list->next;
+		tetris = tmp->content;
+		x = get_x(tetris->elem);
+		y = get_y(tetris->elem);
+		tetris->elem = new_malloc(tetris->elem, x, y);
+		tmp = tmp->next;
 	}
 	return (list);
 }
