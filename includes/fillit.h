@@ -24,18 +24,6 @@
 # define FILLED '#'
 # define SIZE_TETRIS	4
 
-char			**filled_new(char **elem, char **new_elem);
-t_list			*clean_list(t_list *list);
-void			put_error(void);
-int				check_tet(int fd);
-int				nb_tetriminos(char *file);
-int				read_tetriminos(int fd);
-void			four_filled(char **tet);
-int				apply_on_list(t_list *list);
-char			**create_map(int size_map);
-char			**init_map(char **map, int size_map);
-void			print_map(char **map);
-
 typedef struct	s_map
 {
 	char	**field;
@@ -48,5 +36,17 @@ typedef struct	s_tetris
 	int	width;
 	int	height;
 }		t_tetris;
+
+char			**filled_new(char **elem, char **new_elem);
+t_list			*clean_list(t_list *list);
+void			put_error(void);
+int				check_tet(int fd);
+int				nb_tetriminos(char *file);
+int				read_tetriminos(int fd);
+void			four_filled(char **tet);
+int				apply_on_list(t_list *list);
+t_map			*create_map(int size);
+char			**init_map(char **map, int size_map);
+void			print_map(t_map *map);
 
 #endif

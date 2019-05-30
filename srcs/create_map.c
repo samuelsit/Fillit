@@ -12,18 +12,18 @@
 
 #include "../includes/fillit.h"
 
-void	print_map(char **map)
+void	print_map(t_map *map)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while (map[i])
+	while (map->field[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (map->field[i][j])
 		{
-			ft_putchar(map[i][j]);
+			ft_putchar(map->field[i][j]);
 			j++;
 		}
 		ft_putchar('\n');
@@ -50,22 +50,25 @@ char	**init_map(char **map, int size_map)
 	return (map);
 }
 
-char	**create_map(int size_map)
+t_map	*create_map(int size)
 {
-	char	**map;
+	t_map	*map;
 	int		i;
 
 	i = 0;
-	if (!(map = (char **)malloc(sizeof(char *) * (size_map + 1))))
+	if (!(map = malloc(sizeof(*map))))
 		put_error();
-	while (i < size_map)
+	if (!(map->field = (char **)malloc(sizeof(char *) * (size + 1))))
+		put_error();
+	while (i < size)
 	{
-		if (!(map[i] = (char *)malloc(sizeof(char) * (size_map + 1))))
+		if (!(map->field[i] = (char *)malloc(sizeof(char) * (size + 1))))
 			put_error();
-		map[i][size_map] = '\0';
+		map->field[i][size] = '\0';
 		i++;
 	}
-	map[i] = NULL;
-	map = init_map(map, size_map);
+	map->field[i] = NULL;
+	map->field = init_map(map->field, size);
+	map->size = size;
 	return (map);
 }

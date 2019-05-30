@@ -53,6 +53,8 @@ t_tetris	*new_tetris(void)
 		i++;
 	}
 	tetris->elem[SIZE_TETRIS] = 0;
+	tetris->width = SIZE_TETRIS;
+	tetris->height = SIZE_TETRIS;
 	return (tetris);
 }
 
@@ -99,7 +101,7 @@ int			main(int argc, char **argv)
 	int		fdcheck;
 	int		fd;
 	int		size_map;
-	char	**map;
+	t_map		*map;
 
 	list = NULL;
 	if (argc != 2)
