@@ -1,102 +1,127 @@
 #include "../includes/fillit.h"
 
-int		filled_in_y(char *elem)
+int		filled_in_width(char *elem)
 {
-	int x;
+	int height;
 	int nb;
 
-	x = 0;
+	height = 0;
 	nb = 0;
-	while (elem[x])
+	while (elem[height])
 	{
-		if (elem[x] == FILLED)
+		if (elem[height] == FILLED)
 			nb++;
-		x++;
+		height++;
 	}
 	return (nb);
 }
 
-int		get_y(char **elem)
+int		is_s_or_z(char **elem)
 {
-	int x;
-	int y;
-	int new_y;
+	int height;
+	int width;
 
-	x = 0;
-	y = 0;
-	new_y = 0;
-	while (elem[x])
+	height = 0;
+	width = 0;
+	while (elem[height])
 	{
-		new_y = filled_in_y(elem[x]) > new_y ? filled_in_y(elem[x]) : new_y;
-		x++;
+		width = 0;
+		while (elem[height+2][width+1])
+		{
+			if (elem[height][width] == FILLED && elem[height][width+1] == FILLED
+				&& elem[height+1][width] == FILLED && elem[height+1][width+1] == FILLED)
+				return (0);
+			if (elem[height][width] == FILLED && elem[height][width+1] == FILLED
+				&& elem[height+1][width+1] == FILLED && elem[height+2][width+1] == FILLED)
+				return (0);
+			width++;
+		}
+		height++;
 	}
-	return (new_y);
+	return (1);
 }
 
-int		get_x(char **elem)
+int		get_width(char **elem)
 {
-	int x;
-	int y;
-	int new_x;
+	int height;
+	int new_width;
+	int	s_or_z;
 
-	x = 0;
-	y = 0;
-	new_x = 0;
-	while (elem[x])
+	height = 0;
+	new_width = 0;
+	//s_or_z = 0;
+	//s_or_z = is_s_or_z(elem);
+	while (elem[height])
 	{
-		y = 0;
-		while (elem[x][y])
+		new_width = filled_in_width(elem[height]) > new_width ? filled_in_width(elem[height]) : new_width;
+		height++;
+	}
+	//if (new_width == 2 && s_or_z == 1)
+	//	new_width++;
+	return (new_width);
+}
+
+int		get_height(char **elem)
+{
+	int height;
+	int width;
+	int new_height;
+
+	height = 0;
+	width = 0;
+	new_height = 0;
+	while (elem[height])
+	{
+		width = 0;
+		while (elem[height][width])
 		{
-			if (elem[x][y] == FILLED)
+			if (elem[height][width] == FILLED)
 			{
-				new_x++;
+				new_height++;
 				break;
 			}
-			y++;
+			width++;
 		}
-		x++;
+		height++;
 	}
-	return (new_x);
+	return (new_height);
 }
 
-char		**new_malloc(char **elem, int x, int y)
+t_tetris		*new_malloc(t_tetris *tetris)
 {
-	char	**new_elem;
 	int		i;
+	int		first_filled_height;
+	int		first_filled_width;
 
 	i = 0;
-	new_elem = NULL;
-	if (!(new_elem = (char **)malloc(sizeof(char*) * (y + 1))))
-		return (NULL);
-	while (i < y)
+	first_filled_height = len_height_filled(tetris->elem);
+	first_filled_width = len_width_filled(tetris->elem);
+	while (i < tetris->height)
 	{
-		if (!(new_elem[i] = (char *)malloc(sizeof(char) * (x + 1))))
+		if (!(tetris->elem[i] = (char *)ft_realloc(tetris->elem[i + first_filled_height],
+													sizeof(char) * (tetris->width),
+													first_filled_width)))
 			return (NULL);
-		new_elem[i][x] = '\0';
+		tetris->elem[i][tetris->width] = '\0';
 		i++;
 	}
-	new_elem[i] = NULL;
-	new_elem = filled_new(elem, new_elem);
-	return (new_elem);
+	tetris->elem[i] = NULL;
+	return (tetris);
 }
 
 t_list		*clean_list(t_list *list)
 {
 	t_tetris	*tetris;
 	t_list		*tmp;
-	int			x;
-	int			y;
 
-	x = 0;
-	y = 0;
 	tmp = list;
 	tetris = NULL;
 	while (tmp)
 	{
 		tetris = tmp->content;
-		x = get_x(tetris->elem);
-		y = get_y(tetris->elem);
-		tetris->elem = new_malloc(tetris->elem, x, y);
+		tetris->height = get_height(tetris->elem);
+		tetris->width = get_width(tetris->elem); // bug tetri en s ou z -> taille de 2 au lieu de 3
+		tetris = new_malloc(tetris);
 		tmp = tmp->next;
 	}
 	return (list);

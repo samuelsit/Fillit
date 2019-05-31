@@ -37,7 +37,8 @@ typedef struct	s_tetris
 	int	height;
 }		t_tetris;
 
-char			**filled_new(char **elem, char **new_elem);
+int				len_width_filled(char **elem);
+int				len_height_filled(char **elem);
 t_list			*clean_list(t_list *list);
 void			put_error(void);
 int				check_tet(int fd);

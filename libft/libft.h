@@ -28,7 +28,7 @@ typedef	struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-void				*ft_realloc(void *ptr, size_t len);
+void				*ft_realloc(void *ptr, size_t len, size_t first);
 char				*ft_convert(char *nbr, char *base_from, char *base_to);
 int					ft_sqrt(float nb);
 int					ft_factorial(int nb);
@@ -69,6 +69,7 @@ char				*ft_itoa(int n);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memset(void *b, int c, size_t len);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
+void				*ft_memcpy_fillit(void *dst, const void *src, size_t end);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memchr(const void *s, int c, size_t n);

@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void    *ft_realloc(void *ptr, size_t len)
+void    *ft_realloc(void *ptr, size_t len, size_t first)
 {
 	void    *real;
 
@@ -8,7 +8,7 @@ void    *ft_realloc(void *ptr, size_t len)
 		return (NULL);
 	ft_memset(real, 0, len);
 	if (real)
-		ft_memcpy(real, ptr, len);
+		ft_memcpy_fillit(real, &ptr[first], len);
 	free(ptr);
 	return (real);
 }
