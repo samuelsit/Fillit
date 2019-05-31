@@ -3,7 +3,8 @@ SRC	=	srcs/main.c		\
 		srcs/check_tetriminos2.c	\
 		srcs/create_map.c	\
 		srcs/clean_list.c	\
-		srcs/clean_list2.c
+		srcs/clean_list2.c	\
+		srcs/resolve.c
 
 CC	=	gcc -g3
 

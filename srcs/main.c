@@ -122,7 +122,10 @@ int			main(int argc, char **argv)
 	map = create_map(size_map);
 	print_map(map);
 	list = clean_list(list);
-	//backtrack(list, final_size, map);
 	print_list(list);
+	if ((map = backtracking(map, list, 0, 0)))
+		print_map(map);
+	else
+		ft_putstr("NULL\n");
 	return (0);
 }

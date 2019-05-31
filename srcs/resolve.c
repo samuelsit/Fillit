@@ -26,17 +26,17 @@ int	put_in_field(t_map *map, t_tetris *tetris, int x, int y)
 	return (1);
 }
 
-int	backtracking(t_map *map, t_list *list, int x, int y)
+t_map	*backtracking(t_map *map, t_list *list, int x, int y)
 {
 	t_tetris *tetris;
 
 	tetris = list->content;
 	if (!tetris)
-		return (1);
+		return (map);
 	if (x == map->size && y == map->size)
-		return (0);
+		return (NULL);
 	if (!put_in_field(map, tetris, x, y))
-		return (0);
+		return (NULL);
 	if (x == map->size)
 		return (backtracking(map, list->next, 0, y + 1));
 	else

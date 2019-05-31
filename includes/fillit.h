@@ -49,5 +49,6 @@ int				apply_on_list(t_list *list);
 t_map			*create_map(int size);
 char			**init_map(char **map, int size_map);
 void			print_map(t_map *map);
+t_map			*backtracking(t_map *map, t_list *list, int x, int y);
 
 #endif
