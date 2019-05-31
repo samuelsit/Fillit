@@ -11,7 +11,7 @@ NAME	=	fillit
 
 LIB	=	-Llibft -lft
 
-#CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror
 
 RM	=	rm -f
 

@@ -23,7 +23,7 @@ int		is_s_or_z(char **elem)
 
 	height = 0;
 	width = 0;
-	while (elem[height])
+	while (elem[height+2])
 	{
 		width = 0;
 		while (elem[height+2][width+1])
@@ -31,10 +31,14 @@ int		is_s_or_z(char **elem)
 			if (elem[height][width] == FILLED && elem[height][width+1] == FILLED
 				&& elem[height+1][width] == FILLED && elem[height+1][width+1] == FILLED)
 				return (0);
-			if (elem[height][width] == FILLED && elem[height][width+1] == FILLED
+			else if (elem[height][width] == FILLED && elem[height][width+1] == FILLED
 				&& elem[height+1][width+1] == FILLED && elem[height+2][width+1] == FILLED)
 				return (0);
-			width++;
+			else if (elem[height][width] == FILLED && elem[height][width+1] == FILLED
+				&& elem[height+1][width] == FILLED && elem[height+2][width] == FILLED)
+				return (0);
+			else				
+				width++;
 		}
 		height++;
 	}
@@ -49,15 +53,14 @@ int		get_width(char **elem)
 
 	height = 0;
 	new_width = 0;
-	//s_or_z = 0;
-	//s_or_z = is_s_or_z(elem);
+	s_or_z = is_s_or_z(elem);
 	while (elem[height])
 	{
 		new_width = filled_in_width(elem[height]) > new_width ? filled_in_width(elem[height]) : new_width;
 		height++;
 	}
-	//if (new_width == 2 && s_or_z == 1)
-	//	new_width++;
+	if (new_width == 2 && s_or_z == 1)
+		new_width++;
 	return (new_width);
 }
 
@@ -120,7 +123,7 @@ t_list		*clean_list(t_list *list)
 	{
 		tetris = tmp->content;
 		tetris->height = get_height(tetris->elem);
-		tetris->width = get_width(tetris->elem); // bug tetri en s ou z -> taille de 2 au lieu de 3
+		tetris->width = get_width(tetris->elem);
 		tetris = new_malloc(tetris);
 		tmp = tmp->next;
 	}
