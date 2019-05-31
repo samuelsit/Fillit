@@ -119,7 +119,7 @@ int			main(int argc, char **argv)
 	build_list(fd, &list);
 	close(fd);
 	size_map = ft_sqrt(apply_on_list(list) * 4);
-	map = create_map(size_map);
+	map = create_map(size_map + 2);
 	print_map(map);
 	list = clean_list(list);
 	print_list(list);
