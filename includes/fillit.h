@@ -28,6 +28,7 @@ typedef struct	s_map
 {
 	char	**field;
 	int	size;
+	int	nb_tetris;
 }		t_map;
 
 typedef struct	s_tetris

@@ -70,5 +70,6 @@ t_map	*create_map(int size)
 	map->field[i] = NULL;
 	map->field = init_map(map->field, size);
 	map->size = size;
+	map->nb_tetris = 0;
 	return (map);
 }
