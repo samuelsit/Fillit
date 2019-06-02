@@ -19,7 +19,7 @@ void		print_list(t_list *list)
 
 	i = 0;
 	tetris = NULL;
-	ft_putstr("\n----------\nPRINT LIST\n----------\n\n");
+	ft_putstr("----------\nPRINT LIST\n----------\n\n");
 	while (list)
 	{
 		tetris = list->content;
@@ -126,7 +126,7 @@ int			main(int argc, char **argv)
 	{
 		size_map++;
 		map = create_map(size_map);
-		ft_putstr("REALLOC DE LA MAP\n");
+		//ft_putstr("REALLOC DE LA MAP\n");
 	}
 	print_map(map);
 	return (0);

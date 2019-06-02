@@ -11,9 +11,9 @@ int	put_in_field(t_map *map, t_tetris *tetris, int x, int y)
 	if (tetris->width + x > map->size || tetris->height + y > map->size)
 	{
 		if (tetris->width + x > map->size)
-			printf("put_in_field : %d(width) + %d(x) > %d(size_map)\n", tetris->width, x, map->size);
+			printf(/*"put_in_field : %d(width) + %d(x) > %d(size_map)\n", tetris->width, x, map->size*/"");
 		if (tetris->height + y > map->size)
-			printf("put_in_field : %d(height) + %d(y) > %d(map_size)\n", tetris->height, y, map->size);
+			printf(/*"put_in_field : %d(height) + %d(y) > %d(map_size)\n", tetris->height, y, map->size*/"");
 		return (0);
 	}
 	while (tetris->elem[i])
@@ -40,7 +40,7 @@ t_map	*backtracking(t_map *map, t_list *list, int x, int y)
 	if (x == map->size && y == map->size)
 	{
 		// free_map(map);
-		ft_putstr("backtrack\n");
+		//ft_putstr("backtrack\n");
 		return (NULL);
 	}
 	if (put_in_field(map, list->content, x, y))
