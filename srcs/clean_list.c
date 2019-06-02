@@ -23,26 +23,22 @@ int		is_s_or_z(char **elem)
 
 	height = 0;
 	width = 0;
-	while (elem[height+2])
+	while (elem[height+1])
 	{
 		width = 0;
-		while (elem[height+2][width+1])
+		while (elem[height+1][width+1])
 		{
 			if (elem[height][width] == FILLED && elem[height][width+1] == FILLED
-				&& elem[height+1][width] == FILLED && elem[height+1][width+1] == FILLED)
-				return (0);
-			else if (elem[height][width] == FILLED && elem[height][width+1] == FILLED
-				&& elem[height+1][width+1] == FILLED && elem[height+2][width+1] == FILLED)
-				return (0);
-			else if (elem[height][width] == FILLED && elem[height][width+1] == FILLED
-				&& elem[height+1][width] == FILLED && elem[height+2][width] == FILLED)
-				return (0);
-			else				
+			&& elem[height+1][width] == FILLED && elem[height+1][width-1] == FILLED)
+				return (1);
+			if (elem[height][width] == FILLED && elem[height][width+1] == FILLED
+			&& elem[height+1][width+1] == FILLED && elem[height+1][width+2] == FILLED)
+				return (1);
 				width++;
 		}
 		height++;
 	}
-	return (1);
+	return (0);
 }
 
 int		get_width(char **elem)
