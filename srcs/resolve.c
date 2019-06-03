@@ -30,7 +30,6 @@ int	put_in_field(t_map *map, t_tetris *tetris, int x, int y)
 	i = 0;
 	if (tetris->width + x > map->size || tetris->height + y > map->size)
 	{
-		//printf("width=%d; height=%d; x=%d; y=%d; map_size=%d : ", tetris->width, tetris->height, x, y, map->size);
 		//printf("size not ok\n");
 		return (0);
 	}
@@ -66,21 +65,16 @@ t_map	*backtracking(t_map *map, t_list *list, int x, int y)
 
 	if (!list)
 		return (map);
-	//printf("TESTING : y=%d  ;x=%d : map_size=%d, nb_tetris=%d\n", y, x, map->size, map->nb_tetris);
-	if (put_in_field(map, list->content, x, y))
-	{
-		printf("ENTER IN FIELD\n");
-		list = list->next;
-		x = 0;
-		y = 0;
-	}
-	else
-		x++;
+	if (!(put_in_field(map, list->content, x, y)))
+		return (NULL);
+	printf("ENTER IN FIELD\n");
+	list = list->next;
+	x = 0;
+	y = 0;
 	while (y < map->size)
 	{
 		while (x < map->size)
 		{
-			//printf("x=%d ; y=%d\n", x, y);
 			if ((ret = backtracking(map, list, x, y)))
 				return ret;
 			x++;
