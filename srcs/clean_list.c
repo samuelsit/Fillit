@@ -26,7 +26,7 @@ int		is_s_or_z(char **elem)
 	while (elem[height+1])
 	{
 		width = 0;
-		while (elem[height+1][width+1])
+		while (elem[height+1][width+2])
 		{
 			if (elem[height][width] == FILLED && elem[height][width+1] == FILLED
 			&& elem[height+1][width] == FILLED && elem[height+1][width-1] == FILLED)
@@ -97,9 +97,7 @@ t_tetris		*new_malloc(t_tetris *tetris)
 	first_filled_width = len_width_filled(tetris->elem);
 	while (i < tetris->height)
 	{
-		if (!(tetris->elem[i] = (char *)ft_realloc(tetris->elem[i + first_filled_height],
-													sizeof(char) * (tetris->width),
-													first_filled_width)))
+		if (!(tetris->elem[i] = (char *)ft_realloc(tetris->elem[i + first_filled_height], sizeof(char) * (tetris->width + 1), first_filled_width)))
 			return (NULL);
 		tetris->elem[i][tetris->width] = '\0';
 		i++;
