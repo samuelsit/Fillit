@@ -126,7 +126,7 @@ int			main(int argc, char **argv)
 	{
 		size_map++;
 		map = create_map(size_map);
-		//ft_putstr("REALLOC DE LA MAP\n");
+		ft_putstr("REALLOC DE LA MAP\n");
 	}
 	print_map(map);
 	return (0);

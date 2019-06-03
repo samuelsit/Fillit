@@ -34,7 +34,7 @@ int		is_s_or_z(char **elem)
 			if (elem[height][width] == FILLED && elem[height][width+1] == FILLED
 			&& elem[height+1][width+1] == FILLED && elem[height+1][width+2] == FILLED)
 				return (1);
-				width++;
+			width++;
 		}
 		height++;
 	}
