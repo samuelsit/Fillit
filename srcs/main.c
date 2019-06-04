@@ -122,11 +122,10 @@ int			main(int argc, char **argv)
 	map = create_map(size_map);
 	list = clean_list(list);
 	print_list(list);
-	while (!(map = backtracking(map, list, 0, 0)))
+	while (!(map = backtracking(map, list)))
 	{
 		size_map++;
 		map = create_map(size_map);
-		ft_putstr("REALLOC DE LA MAP\n");
 	}
 	print_map(map);
 	return (0);

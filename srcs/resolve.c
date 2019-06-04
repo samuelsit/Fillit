@@ -1,5 +1,4 @@
 
-#include <stdio.h>
 #include "../includes/fillit.h"
 
 void	clear_field(t_map *map, char c)
@@ -19,7 +18,6 @@ void	clear_field(t_map *map, char c)
 		}
 		i++;
 	}
-	printf("CLEARED\n");
 }
 
 int	put_in_field(t_map *map, t_tetris *tetris, int x, int y)
@@ -29,10 +27,7 @@ int	put_in_field(t_map *map, t_tetris *tetris, int x, int y)
 
 	i = 0;
 	if (tetris->width + x > map->size || tetris->height + y > map->size)
-	{
-		//printf("size not ok\n");
 		return (0);
-	}
 	while (tetris->elem[i])
 	{
 		j = 0;
@@ -40,43 +35,40 @@ int	put_in_field(t_map *map, t_tetris *tetris, int x, int y)
 		{
 			if (map->field[y + i][x + j] != EMPTY && tetris->elem[i][j] == FILLED)
 			{
-				printf("Obstrué map[%d][%d] : (%d) : map_size=%d\n", y, x, map->nb_tetris, map->size);
 				clear_field(map, map->nb_tetris + 65);
 				return (0);
 			}
 			if (tetris->elem[i][j] == FILLED)
-			{
-				printf("map[%d][%d] = %d\n", y + i, x + j, map->nb_tetris + 65);
 				map->field[y + i][x + j] = (char)(map->nb_tetris + 65);
-			}
 			j++;
 		}
 		i++;
 	}
-	print_map(map);
-	ft_putstr("\n");
 	map->nb_tetris++;
 	return (1);
 }
 
-t_map	*backtracking(t_map *map, t_list *list, int x, int y)
+t_map	*backtracking(t_map *map, t_list *list)
 {
 	t_map *ret;
+	int x;
+	int y;
 
 	if (!list)
 		return (map);
-	if (!(put_in_field(map, list->content, x, y)))
-		return (NULL);
-	printf("ENTER IN FIELD\n");
-	list = list->next;
 	x = 0;
 	y = 0;
 	while (y < map->size)
 	{
 		while (x < map->size)
 		{
-			if ((ret = backtracking(map, list, x, y)))
-				return ret;
+			if ((put_in_field(map, list->content, x, y)))
+			{
+				if ((ret = backtracking(map, list->next)))
+					return ret;
+				map->nb_tetris--;
+				clear_field(map, map->nb_tetris + 65);
+			}
 			x++;
 		}
 		y++;
