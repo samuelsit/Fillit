@@ -4,7 +4,8 @@ SRC	=	srcs/main.c		\
 		srcs/create_map.c	\
 		srcs/clean_list.c	\
 		srcs/clean_list2.c	\
-		srcs/resolve.c
+		srcs/resolve.c		\
+		srcs/free.c
 
 CC	=	gcc -g3
 

@@ -52,5 +52,8 @@ t_map			*create_map(int size);
 char			**init_map(char **map, int size_map);
 void			print_map(t_map *map);
 t_map			*backtracking(t_map *map, t_list *list);
+void			free_map(t_map *map);
+void			free_tetris(t_tetris *map);
+void			free_list(t_list *list);
 
 #endif

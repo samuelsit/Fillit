@@ -128,5 +128,7 @@ int			main(int argc, char **argv)
 		map = create_map(size_map);
 	}
 	print_map(map);
+	free_map(map);
+	free_list(list);
 	return (0);
 }
