@@ -1,65 +1,25 @@
 #include "../includes/fillit.h"
 
-int		filled_in_width(char *elem)
-{
-	int height;
-	int nb;
-
-	height = 0;
-	nb = 0;
-	while (elem[height])
-	{
-		if (elem[height] == FILLED)
-			nb++;
-		height++;
-	}
-	return (nb);
-}
-
-int		is_s_or_z(char **elem, int new_width)
+int		get_width(char **elem)
 {
 	int height;
 	int width;
+	int new_width;
 
 	height = 0;
-	if (new_width != 3)
-		return (0);
+	width = 0;
+	new_width = 0;
 	while (elem[height+1])
 	{
 		width = 0;
-		while (elem[height+1][width+1])
+		while (elem[height+1][width])
 		{
-			if (elem[height+1][width-1] && elem[height][width] == FILLED
-			&& elem[height][width+1] == FILLED && elem[height+1][width] == FILLED
-			&& elem[height+1][width-1] == FILLED)
-				return (1);
-			if (elem[height+1][width+2] && elem[height][width] == FILLED
-			&& elem[height][width+1] == FILLED && elem[height+1][width+1] == FILLED
-			&& elem[height+1][width+2] == FILLED)
-				return (1);
+			if (elem[height][width] == FILLED && elem[height+1][width] != FILLED)
+				new_width++;
 			width++;
 		}
 		height++;
 	}
-	return (0);
-}
-
-int		get_width(char **elem)
-{
-	int height;
-	int new_width;
-	int	s_or_z;
-
-	height = 0;
-	new_width = 0;
-	while (elem[height])
-	{
-		new_width = filled_in_width(elem[height]) > new_width ? filled_in_width(elem[height]) : new_width;
-		height++;
-	}
-	s_or_z = is_s_or_z(elem, new_width);
-	if (new_width == 2 && s_or_z == 1)
-		new_width++;
 	return (new_width);
 }
 
@@ -121,6 +81,7 @@ t_list		*clean_list(t_list *list)
 		tetris = tmp->content;
 		tetris->height = get_height(tetris->elem);
 		tetris->width = get_width(tetris->elem);
+		ft_putnbr(tetris->width);
 		tetris = new_malloc(tetris);
 		tmp = tmp->next;
 	}
