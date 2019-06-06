@@ -31,7 +31,7 @@ int		check_filled(char **tet, int i, int j, int occurence)
 	return (occurence);
 }
 
-void	four_filled(char **tet)
+int	four_filled(char **tet)
 {
 	int		i;
 	int		j;
@@ -57,4 +57,5 @@ void	four_filled(char **tet)
 	}
 	if ((occurence != 6 && occurence != 8) || nb_filled != 4)
 		put_error();
+	return (occurence);
 }

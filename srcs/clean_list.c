@@ -1,25 +1,35 @@
 #include "../includes/fillit.h"
 
-int		get_width(char **elem)
+int		filled_in_width(char *elem)
 {
 	int height;
+	int nb;
+
+	height = 0;
+	nb = 0;
+	while (elem[height])
+	{
+		if (elem[height] == FILLED)
+			nb++;
+		height++;
+	}
+	return (nb);
+}
+
+int		get_width(char **elem, int occur)
+{
 	int width;
 	int new_width;
 
-	height = 0;
 	width = 0;
 	new_width = 0;
-	while (elem[height+1])
+	while (elem[width])
 	{
-		width = 0;
-		while (elem[height+1][width])
-		{
-			if (elem[height][width] == FILLED && elem[height+1][width] != FILLED)
-				new_width++;
-			width++;
-		}
-		height++;
+		new_width = filled_in_width(elem[width]) > new_width ? filled_in_width(elem[width]) : new_width;
+		width++;
 	}
+	if (new_width == 2 && occur != 8)
+		new_width++;
 	return (new_width);
 }
 
@@ -80,11 +90,10 @@ t_list		*clean_list(t_list *list)
 	{
 		tetris = tmp->content;
 		tetris->height = get_height(tetris->elem);
-		tetris->width = get_width(tetris->elem);
+		tetris->width = get_width(tetris->elem, tetris->occurence);
 		ft_putnbr(tetris->width);
 		tetris = new_malloc(tetris);
 		tmp = tmp->next;
 	}
-	free(tmp);
 	return (list);
 }

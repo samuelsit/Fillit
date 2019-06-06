@@ -34,6 +34,7 @@ typedef struct	s_map
 typedef struct	s_tetris
 {
 	char	**elem;
+	int	occurence;
 	int	width;
 	int	height;
 }		t_tetris;
@@ -45,7 +46,7 @@ void			put_error(void);
 int				check_tet(int fd);
 int				nb_tetriminos(char *file);
 int				read_tetriminos(int fd);
-void			four_filled(char **tet);
+int			four_filled(char **tet);
 int				apply_on_list(t_list *list);
 void				print_list(t_list *list);
 t_map			*create_map(int size);

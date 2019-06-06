@@ -84,7 +84,7 @@ int		apply_on_list(t_list *list)
 	while (tmp)
 	{
 		tetris = tmp->content;
-		four_filled(tetris->elem);
+		tetris->occurence = four_filled(tetris->elem);
 		tmp = tmp->next;
 		nb_tetris++;
 	}
