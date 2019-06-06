@@ -16,7 +16,7 @@ int		filled_in_width(char *elem)
 	return (nb);
 }
 
-int		get_width(char **elem, int occur)
+int		get_width(char **elem, int occur, int height)
 {
 	int width;
 	int new_width;
@@ -28,7 +28,7 @@ int		get_width(char **elem, int occur)
 		new_width = filled_in_width(elem[width]) > new_width ? filled_in_width(elem[width]) : new_width;
 		width++;
 	}
-	if (new_width == 2 && occur != 8)
+	if (new_width == 2 && occur != 8 && height < 3)
 		new_width++;
 	return (new_width);
 }
@@ -90,7 +90,7 @@ t_list		*clean_list(t_list *list)
 	{
 		tetris = tmp->content;
 		tetris->height = get_height(tetris->elem);
-		tetris->width = get_width(tetris->elem, tetris->occurence);
+		tetris->width = get_width(tetris->elem, tetris->occurence, tetris->height);
 		ft_putnbr(tetris->width);
 		tetris = new_malloc(tetris);
 		tmp = tmp->next;
