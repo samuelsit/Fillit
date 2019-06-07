@@ -6,7 +6,7 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 16:09:57 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/05/20 17:20:01 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/06/08 01:09:38 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		check_filled(char **tet, int i, int j, int occurence)
 	return (occurence);
 }
 
-int	four_filled(char **tet)
+int		four_filled(char **tet)
 {
 	int		i;
 	int		j;

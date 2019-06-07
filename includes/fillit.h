@@ -6,7 +6,7 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:24:49 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/05/21 13:25:04 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/06/08 01:23:24 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@
 typedef struct	s_map
 {
 	char	**field;
-	int	size;
-	int	nb_tetris;
-}		t_map;
+	int		size;
+	int		nb_tetris;
+}				t_map;
 
 typedef struct	s_tetris
 {
 	char	**elem;
-	int	occurence;
-	int	width;
-	int	height;
-}		t_tetris;
+	int		occurence;
+	int		width;
+	int		height;
+}				t_tetris;
 
 int				len_width_filled(char **elem);
 int				len_height_filled(char **elem);
@@ -46,9 +46,9 @@ void			put_error(void);
 int				check_tet(int fd);
 int				nb_tetriminos(char *file);
 int				read_tetriminos(int fd);
-int			four_filled(char **tet);
+int				four_filled(char **tet);
 int				apply_on_list(t_list *list);
-void				print_list(t_list *list);
+void			print_list(t_list *list);
 t_map			*create_map(int size);
 char			**init_map(char **map, int size_map);
 void			print_map(t_map *map);

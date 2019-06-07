@@ -6,34 +6,11 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 15:00:42 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/05/21 13:27:18 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/06/08 01:19:42 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
-
-void		print_list(t_list *list)
-{
-	t_tetris	*tetris;
-	int			i;
-
-	i = 0;
-	tetris = NULL;
-	ft_putstr("----------\nPRINT LIST\n----------\n\n");
-	while (list)
-	{
-		tetris = list->content;
-		while (tetris->elem[i])
-		{
-			ft_putstr(tetris->elem[i]);
-			ft_putchar('\n');
-			i++;
-		}
-		ft_putchar('\n');
-		list = list->next;
-		i = 0;
-	}
-}
 
 t_tetris	*new_tetris(void)
 {
@@ -101,7 +78,7 @@ int			main(int argc, char **argv)
 	int		fdcheck;
 	int		fd;
 	int		size_map;
-	t_map		*map;
+	t_map	*map;
 
 	list = NULL;
 	if (argc != 2)
@@ -121,7 +98,6 @@ int			main(int argc, char **argv)
 	size_map = ft_sqrt(apply_on_list(list) * 4);
 	map = create_map(size_map);
 	list = clean_list(list);
-	print_list(list);
 	while (!(map = backtracking(map, list)))
 	{
 		size_map++;

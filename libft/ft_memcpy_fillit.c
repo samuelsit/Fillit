@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy_fillit.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 15:44:34 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/04/05 14:13:47 by ssitruk          ###   ########.fr       */
+/*   Created: 2019/06/08 01:21:29 by ssitruk           #+#    #+#             */
+/*   Updated: 2019/06/08 01:23:40 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	*ft_memcpy_fillit(void *dst, const void *src, size_t end)
 {
-	size_t i = 0;
+	size_t	i;
 	char	*tmpdst;
 	char	*tmpsrc;
 
+	i = 0;
 	tmpdst = (char *)dst;
 	tmpsrc = (char *)src;
 	while (i != end)

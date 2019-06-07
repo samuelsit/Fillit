@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/08 01:22:04 by ssitruk           #+#    #+#             */
+/*   Updated: 2019/06/08 01:24:21 by ssitruk          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void    *ft_realloc(void *ptr, size_t len, size_t first)
+void	*ft_realloc(void *ptr, size_t len, size_t first)
 {
-	void    *real;
+	void	*real;
 
 	if (!(real = malloc(len)))
 		return (NULL);

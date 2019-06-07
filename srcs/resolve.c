@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   resolve.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/08 01:06:48 by ssitruk           #+#    #+#             */
+/*   Updated: 2019/06/08 01:09:06 by ssitruk          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
@@ -20,7 +31,7 @@ void	clear_field(t_map *map, char c)
 	}
 }
 
-int	put_in_field(t_map *map, t_tetris *tetris, int x, int y)
+int		put_in_field(t_map *map, t_tetris *tetris, int x, int y)
 {
 	int i;
 	int j;
@@ -33,7 +44,8 @@ int	put_in_field(t_map *map, t_tetris *tetris, int x, int y)
 		j = 0;
 		while (tetris->elem[i][j])
 		{
-			if (map->field[y + i][x + j] != EMPTY && tetris->elem[i][j] == FILLED)
+			if (map->field[y + i][x + j] != EMPTY
+					&& tetris->elem[i][j] == FILLED)
 			{
 				clear_field(map, map->nb_tetris + 65);
 				return (0);
@@ -50,9 +62,9 @@ int	put_in_field(t_map *map, t_tetris *tetris, int x, int y)
 
 t_map	*backtracking(t_map *map, t_list *list)
 {
-	t_map *ret;
-	int x;
-	int y;
+	t_map	*ret;
+	int		x;
+	int		y;
 
 	if (!list)
 		return (map);
@@ -65,7 +77,7 @@ t_map	*backtracking(t_map *map, t_list *list)
 			if ((put_in_field(map, list->content, x, y)))
 			{
 				if ((ret = backtracking(map, list->next)))
-					return ret;
+					return (ret);
 				map->nb_tetris--;
 				clear_field(map, map->nb_tetris + 65);
 			}
