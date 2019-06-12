@@ -39,6 +39,8 @@ typedef struct	s_tetris
 	int		height;
 }				t_tetris;
 
+void				*ft_memcpy_fillit(void *dst, const void *src, size_t end);
+void				*ft_realloc(void *ptr, size_t len, size_t first);
 int				len_width_filled(char **elem);
 int				len_height_filled(char **elem);
 t_list			*clean_list(t_list *list);
