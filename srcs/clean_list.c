@@ -91,6 +91,8 @@ t_tetris	*new_malloc(t_tetris *tetris)
 		i++;
 	}
 	tetris->elem[i] = NULL;
+//	while (tetris->elem[++i])
+//		free(tetris->elem[i]);
 	return (tetris);
 }
 
