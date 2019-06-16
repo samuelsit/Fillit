@@ -87,12 +87,12 @@ int			main(int argc, char **argv)
 		return (0);
 	}
 	if ((fdcheck = open(argv[1], O_RDONLY)) < 0)
-		return (0);
+		put_error();
 	if (!check_tet(fdcheck))
-		return (0);
+		put_error();
 	close(fdcheck);
 	if ((fd = open(argv[1], O_RDONLY)) < 0)
-		return (0);
+		put_error();
 	build_list(fd, &list);
 	close(fd);
 	size_map = ft_sqrt(apply_on_list(list) * 4);
