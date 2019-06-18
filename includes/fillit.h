@@ -6,7 +6,7 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:24:49 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/06/08 01:23:24 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/06/18 01:38:52 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ typedef struct	s_tetris
 	int		height;
 }				t_tetris;
 
-void				*ft_memcpy_fillit(void *dst, const void *src, size_t end);
-void				*ft_realloc(void *ptr, size_t len, size_t first);
+void			free_before_realloc(t_tetris *tetris);
+void			*ft_memcpy_fillit(void *dst, const void *src, size_t end);
+void			*ft_realloc(void *ptr, size_t len, size_t first);
 int				len_width_filled(char **elem);
 int				len_height_filled(char **elem);
 t_list			*clean_list(t_list *list);

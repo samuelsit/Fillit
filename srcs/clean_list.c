@@ -6,7 +6,7 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 01:10:02 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/06/08 01:20:11 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/06/18 02:33:20 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ t_tetris	*new_malloc(t_tetris *tetris)
 	i = 0;
 	first_filled_height = len_height_filled(tetris->elem);
 	first_filled_width = len_width_filled(tetris->elem);
+	free_before_realloc(tetris);
 	while (i < tetris->height)
 	{
 		if (!(tetris->elem[i] =
@@ -91,8 +92,6 @@ t_tetris	*new_malloc(t_tetris *tetris)
 		i++;
 	}
 	tetris->elem[i] = NULL;
-//	while (tetris->elem[++i])
-//		free(tetris->elem[i]);
 	return (tetris);
 }
 
