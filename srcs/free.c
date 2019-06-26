@@ -29,6 +29,22 @@ void	free_map(t_map *map)
 	map = NULL;
 }
 
+void	free_array(char	**arr)
+{
+	int i;
+
+	i = 0;
+	if (!arr)
+		return ;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	arr = NULL;
+}
+
 void	free_tetris(t_tetris *tetris)
 {
 	int i;

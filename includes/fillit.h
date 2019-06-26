@@ -39,6 +39,7 @@ typedef struct	s_tetris
 	int		height;
 }				t_tetris;
 
+void			free_array(char	**arr);
 t_tetris		*new_tetris(int width, int height);
 char			*ft_strncpy_f(char *dst, const char *src, int first, int len);
 int				len_width_filled(char **elem);

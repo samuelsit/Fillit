@@ -100,6 +100,7 @@ char	**new_malloc(t_tetris *tetris)
 		i++;
 	}
 	new[i] = NULL;
+	free_array(tetris->elem);
 	return (new);
 }
 
