@@ -93,6 +93,7 @@ t_tetris	*new_malloc(t_tetris *tetris)
 		i++;
 	}
 	new->elem[i] = NULL;
+	free_tetris(tetris);
 	return (new);
 }
 
@@ -112,7 +113,5 @@ t_list		*clean_list(t_list *list)
 		tetris = new_malloc(tetris);
 		tmp = tmp->next;
 	}
-	printf("salut");
-
 	return (list);
 }
