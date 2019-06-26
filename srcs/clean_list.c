@@ -74,34 +74,41 @@ int			get_height(char **elem)
 
 #include<stdio.h>
 
-t_tetris	*new_malloc(t_tetris *tetris)
+char	**new_malloc(t_tetris *tetris)
 {
 	int		i;
 	int		first_filled_height;
 	int		first_filled_width;
-	t_tetris *new;
+	char	**new;
 
 	i = 0;
-	new = new_tetris(tetris->width, tetris->height);
+	if (!(new = malloc(sizeof(char*) * (tetris->height + 1))))
+		return (NULL);
+	while (i < tetris->height + 1)
+	{
+		if (!(new[i] = malloc(sizeof(char) * (tetris->width + 1))))
+			return (NULL);
+		new[i][tetris->width] = '\0';
+		i++;
+	}
+	new[i] = NULL;
+	i = 0;
 	first_filled_height = len_height_filled(tetris->elem);
 	first_filled_width = len_width_filled(tetris->elem);
 	while (i < tetris->height)
 	{
-		new->elem[i] = ft_strncpy_f(new->elem[i], tetris->elem[first_filled_height + i], first_filled_width, tetris->width);
-		new->elem[i][tetris->width] = '\0';
-		printf("%s\n", new->elem[i]);
+		new[i] = ft_strncpy_f(new[i], tetris->elem[first_filled_height + i], first_filled_width, tetris->width);
 		i++;
 	}
-	new->elem[i] = NULL;
 	return (new);
 }
 
-t_list		*clean_list(t_list *list)
+void	clean_list(t_list **list)
 {
 	t_tetris	*tetris;
 	t_list		*tmp;
 
-	tmp = list;
+	tmp = *list;
 	tetris = NULL;
 	while (tmp)
 	{
@@ -109,8 +116,7 @@ t_list		*clean_list(t_list *list)
 		tetris->height = get_height(tetris->elem);
 		tetris->width = get_width(tetris->elem, tetris->occurence,
 			tetris->height);
-		tetris = new_malloc(tetris);
+		tetris->elem = new_malloc(tetris);
 		tmp = tmp->next;
 	}
-	return (list);
 }

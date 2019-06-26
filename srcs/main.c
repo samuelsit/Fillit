@@ -97,7 +97,7 @@ int			main(int argc, char **argv)
 	close(fd);
 	size_map = ft_sqrt(apply_on_list(list) * 4);
 	map = create_map(size_map);
-	list = clean_list(list);
+	clean_list(&list);
 	while (!(map = backtracking(map, list)))
 	{
 		size_map++;
