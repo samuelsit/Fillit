@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_strncpy_.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,15 +12,20 @@
 
 #include "../includes/fillit.h"
 
-void	*ft_realloc(void *ptr, size_t len, size_t first)
+char	*ft_strncpy_f(char *dst, const char *src, int first, int len)
 {
-	void	*real;
+	int i;
 
-	if (!(real = malloc(len)))
-		return (NULL);
-	ft_memset(real, 0, len);
-	if (real)
-		ft_memcpy_fillit(real, ptr + first, len);
-	free(ptr);
-	return (real);
+	i = 0;
+	while (i != len && src[i] != '\0')
+	{
+		dst[i] = src[i + first];
+		i++;
+	}
+	while (i < len)
+	{
+		dst[i] = '\0';
+		i++;
+	}
+	return (dst);
 }

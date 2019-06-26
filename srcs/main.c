@@ -12,7 +12,7 @@
 
 #include "../includes/fillit.h"
 
-t_tetris	*new_tetris(void)
+t_tetris	*new_tetris(int width, int height)
 {
 	t_tetris	*tetris;
 	int			i;
@@ -20,18 +20,18 @@ t_tetris	*new_tetris(void)
 	i = 0;
 	if (!(tetris = malloc(sizeof(*tetris))))
 		exit(0);
-	if (!(tetris->elem = malloc(sizeof(char *) * (SIZE_TETRIS + 1))))
+	if (!(tetris->elem = malloc(sizeof(char *) * (height + 1))))
 		exit(0);
-	while (i < SIZE_TETRIS + 1)
+	while (i < height + 1)
 	{
-		if (!(tetris->elem[i] = malloc(sizeof(char) * (SIZE_TETRIS + 1))))
+		if (!(tetris->elem[i] = malloc(sizeof(char) * (width + 1))))
 			exit(0);
-		tetris->elem[i][SIZE_TETRIS] = '\0';
+		tetris->elem[i][width] = '\0';
 		i++;
 	}
-	tetris->elem[SIZE_TETRIS] = 0;
-	tetris->width = SIZE_TETRIS;
-	tetris->height = SIZE_TETRIS;
+	tetris->elem[height] = 0;
+	tetris->width = width;
+	tetris->height = height;
 	return (tetris);
 }
 
@@ -44,7 +44,7 @@ void		build_list(int fd, t_list **list)
 	int			i;
 
 	i = 0;
-	tetris = new_tetris();
+	tetris = new_tetris(SIZE_TETRIS, SIZE_TETRIS);
 	while ((ret = get_next_line(fd, &line)) >= 0)
 	{
 		if (*line && ret == 1)
@@ -65,7 +65,7 @@ void		build_list(int fd, t_list **list)
 				tmp = tmp->next;
 			}
 			i = 0;
-			tetris = new_tetris();
+			tetris = new_tetris(SIZE_TETRIS, SIZE_TETRIS);
 		}
 		if (ret == 0)
 			return ;

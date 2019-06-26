@@ -12,33 +12,6 @@
 
 #include "../includes/fillit.h"
 
-int		is_empty_line(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == FILLED)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-void	free_before_realloc(t_tetris *tetris)
-{
-	int i;
-
-	i = 0;
-	while (tetris->elem[i])
-	{
-		if (is_empty_line(tetris->elem[i]))
-			free(tetris->elem[i]);
-		i++;
-	}
-}
-
 void	free_map(t_map *map)
 {
 	int i;
