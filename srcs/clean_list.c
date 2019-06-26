@@ -99,7 +99,9 @@ char	**new_malloc(t_tetris *tetris)
 	{
 		new[i] = ft_strncpy_f(new[i], tetris->elem[first_filled_height + i], first_filled_width, tetris->width);
 		i++;
+		new[i][tetris->width] = '\0';
 	}
+	new[i] = NULL;
 	return (new);
 }
 
