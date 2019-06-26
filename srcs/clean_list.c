@@ -93,7 +93,6 @@ t_tetris	*new_malloc(t_tetris *tetris)
 		i++;
 	}
 	new->elem[i] = NULL;
-	free_tetris(tetris);
 	return (new);
 }
 
