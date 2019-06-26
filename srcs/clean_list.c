@@ -84,22 +84,20 @@ char	**new_malloc(t_tetris *tetris)
 	i = 0;
 	if (!(new = malloc(sizeof(char*) * (tetris->height + 1))))
 		return (NULL);
-	while (i < tetris->height + 1)
+	while (i < tetris->height)
 	{
 		if (!(new[i] = malloc(sizeof(char) * (tetris->width + 1))))
 			return (NULL);
-		new[i][tetris->width] = '\0';
 		i++;
 	}
-	new[i] = NULL;
 	i = 0;
 	first_filled_height = len_height_filled(tetris->elem);
 	first_filled_width = len_width_filled(tetris->elem);
 	while (i < tetris->height)
 	{
 		new[i] = ft_strncpy_f(new[i], tetris->elem[first_filled_height + i], first_filled_width, tetris->width);
-		i++;
 		new[i][tetris->width] = '\0';
+		i++;
 	}
 	new[i] = NULL;
 	return (new);
