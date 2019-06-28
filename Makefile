@@ -5,8 +5,7 @@ SRC	=	srcs/main.c		\
 		srcs/clean_list.c	\
 		srcs/clean_list2.c	\
 		srcs/resolve.c		\
-		srcs/free.c		\
-		srcs/ft_strncpy_f.c
+		srcs/free.c
 
 CC	=	gcc -g3
 

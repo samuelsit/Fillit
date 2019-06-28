@@ -47,13 +47,20 @@ void		build_list(int fd, t_list **list)
 	tetris = new_tetris(SIZE_TETRIS, SIZE_TETRIS);
 	while ((ret = get_next_line(fd, &line)) >= 0)
 	{
-		if (*line && ret == 1)
+		if (line && *line && ret == 1)
 		{
-			tetris->elem[i] = line;
+			ft_strcpy(tetris->elem[i], line);
+			free(line);
+			line = NULL;
 			i++;
 		}
 		else
 		{
+			if (line)
+			{
+				free(line);
+				line = NULL;
+			}
 			if (!(*list))
 			{
 				*list = ft_lstnew(tetris, sizeof(*tetris));
@@ -79,6 +86,7 @@ int			main(int argc, char **argv)
 	int		fd;
 	int		size_map;
 	t_map	*map;
+	t_map	*res;
 
 	list = NULL;
 	if (argc != 2)
@@ -98,13 +106,14 @@ int			main(int argc, char **argv)
 	size_map = ft_sqrt(apply_on_list(list) * 4);
 	map = create_map(size_map);
 	clean_list(&list);
-	while (!(map = backtracking(map, list)))
+	while (!(res = backtracking(map, list)))
 	{
 		size_map++;
+		free_map(map);
 		map = create_map(size_map);
 	}
-	print_map(map);
-	free_map(map);
+	print_map(res);
+	free_map(res);
 	free_list(list);
 	return (0);
 }

@@ -86,6 +86,5 @@ t_map	*backtracking(t_map *map, t_list *list)
 		y++;
 		x = 0;
 	}
-	//free_map(map);
 	return (NULL);
 }

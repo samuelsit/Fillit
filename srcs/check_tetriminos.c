@@ -67,6 +67,11 @@ int		check_tet(int fd)
 		if (!(column(c, l)))
 			put_error();
 		l++;
+		if (line_tet)
+		{
+			free(line_tet);
+			line_tet = NULL;
+		}
 	}
 	if (!(line(l)))
 		put_error();

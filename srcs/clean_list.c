@@ -77,8 +77,8 @@ int			get_height(char **elem)
 char	**new_malloc(t_tetris *tetris)
 {
 	int		i;
-	int		first_filled_height;
-	int		first_filled_width;
+	int		begin_height;
+	int		begin_width;
 	char	**new;
 
 	i = 0;
@@ -91,11 +91,12 @@ char	**new_malloc(t_tetris *tetris)
 		i++;
 	}
 	i = 0;
-	first_filled_height = len_height_filled(tetris->elem);
-	first_filled_width = len_width_filled(tetris->elem);
+	begin_height = len_height_filled(tetris->elem);
+	begin_width = len_width_filled(tetris->elem);
 	while (i < tetris->height)
 	{
-		new[i] = ft_strncpy_f(new[i], tetris->elem[first_filled_height + i], first_filled_width, tetris->width);
+		new[i] = ft_strncpy(new[i], &tetris->elem[begin_height + i][begin_width],
+						tetris->width);
 		new[i][tetris->width] = '\0';
 		i++;
 	}
