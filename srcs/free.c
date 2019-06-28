@@ -65,15 +65,17 @@ void	free_tetris(t_tetris *tetris)
 void	free_list(t_list *list)
 {
 	t_list *tmp;
+	t_tetris *tetris;
 
 	if (list)
 		tmp = list->next;
 	while (list)
 	{
-		free_tetris(list->content);
+		tetris = list->content;
+		free_tetris(tetris);
 		free(list);
 		list = tmp;
-		if (tmp)
+		if (list)
 			tmp = tmp->next;
 	}
 	list = NULL;

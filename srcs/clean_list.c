@@ -72,8 +72,6 @@ int			get_height(char **elem)
 	return (new_height);
 }
 
-#include<stdio.h>
-
 char	**new_malloc(t_tetris *tetris)
 {
 	int		i;
