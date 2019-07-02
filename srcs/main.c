@@ -22,7 +22,7 @@ t_tetris	*new_tetris(int width, int height)
 		exit(0);
 	if (!(tetris->elem = malloc(sizeof(char *) * (height + 1))))
 		exit(0);
-	while (i < height + 1)
+	while (i < height)
 	{
 		if (!(tetris->elem[i] = malloc(sizeof(char) * (width + 1))))
 			exit(0);

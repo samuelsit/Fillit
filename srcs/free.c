@@ -19,7 +19,7 @@ void	free_map(t_map *map)
 	i = 0;
 	if (!map)
 		return ;
-	while (i < map->size + 1)
+	while (i < map->size)
 	{
 		free(map->field[i]);
 		i++;
@@ -52,13 +52,13 @@ void	free_tetris(t_tetris *tetris)
 	i = 0;
 	if (!tetris)
 		return ;
-	while (i < tetris->height + 1)
+	while (i < tetris->height)
 	{
 		free(tetris->elem[i]);
 		i++;
 	}
 	free(tetris->elem);
-	free(tetris);
+	//free(tetris);
 	tetris = NULL;
 }
 
