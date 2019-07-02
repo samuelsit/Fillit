@@ -5,7 +5,8 @@ SRC	=	srcs/main.c		\
 		srcs/clean_list.c	\
 		srcs/clean_list2.c	\
 		srcs/resolve.c		\
-		srcs/free.c
+		srcs/free.c		\
+		srcs/list_tetris.c
 
 CC	=	gcc -g3
 
