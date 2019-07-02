@@ -58,21 +58,19 @@ void	free_tetris(t_tetris *tetris)
 		i++;
 	}
 	free(tetris->elem);
-	//free(tetris);
+	free(tetris);
 	tetris = NULL;
 }
 
 void	free_list(t_list *list)
 {
 	t_list *tmp;
-	t_tetris *tetris;
 
 	if (list)
 		tmp = list->next;
 	while (list)
 	{
-		tetris = list->content;
-		free_tetris(tetris);
+		free_tetris(list->content);
 		free(list);
 		list = tmp;
 		if (list)

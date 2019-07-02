@@ -44,11 +44,12 @@ void		build_list(int fd, t_list **list)
 	int			i;
 
 	i = 0;
-	tetris = new_tetris(SIZE_TETRIS, SIZE_TETRIS);
 	while ((ret = get_next_line(fd, &line)) >= 0)
 	{
 		if (line && *line && ret == 1)
 		{
+			if ((i % 5) == 0)
+				tetris = new_tetris(SIZE_TETRIS, SIZE_TETRIS);
 			ft_strcpy(tetris->elem[i], line);
 			free(line);
 			line = NULL;
@@ -72,7 +73,6 @@ void		build_list(int fd, t_list **list)
 				tmp = tmp->next;
 			}
 			i = 0;
-			tetris = new_tetris(SIZE_TETRIS, SIZE_TETRIS);
 		}
 		if (ret == 0)
 			return ;
