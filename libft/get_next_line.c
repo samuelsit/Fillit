@@ -3,71 +3,76 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jekejler <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/15 21:26:12 by jekejler          #+#    #+#             */
-/*   Updated: 2019/04/15 21:26:15 by jekejler         ###   ########.fr       */
+/*   Created: 2019/04/14 19:56:07 by ssitruk           #+#    #+#             */
+/*   Updated: 2019/05/07 15:12:17 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t		ft_strlen_ligne(char *str)
+char	*start_line(char *rest)
 {
-	int		i;
+	if (!rest)
+		rest = ft_strdup("");
+	return (rest);
+}
 
-	if (!str)
-		return (0);
+int		len_line(char *str)
+{
+	int	i;
+
 	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
 	return (i);
 }
 
-static t_list		*choix_fd(size_t fd, t_list **newliste)
+char	*new_line(char *rest)
 {
-	t_list		*liste;
-
-	if (*newliste == NULL)
-		*newliste = ft_lstnew("\0", fd);
-	liste = *newliste;
-	while ((liste)->content_size != fd)
-	{
-		if ((liste)->next == NULL)
-		{
-			if ((liste->next = ft_lstnew("\0", fd)) == NULL)
-				return (NULL);
-		}
-		liste = liste->next;
-	}
-	return (liste);
+	if (rest[len_line(rest)] == '\n')
+		rest = ft_strdup(&rest[len_line(rest) + 1]);
+	else
+		rest = ft_strnew(0);
+	return (rest);
 }
 
-int					get_next_line(const int fd, char **line)
+char	*free_line(char *rest)
 {
-	char				buffer[BUFF_SIZE + 1];
-	char				*tmp;
-	int					r;
-	static t_list		*tetedeliste = NULL;
-	t_list				*listeactuel;
+	char	*tmp;
 
-	if (fd < 0 || BUFF_SIZE < 1 || !line || (r = read(fd, buffer, 0)) < 0)
-		return (-1);
-	listeactuel = choix_fd((size_t)fd, &tetedeliste);
-	tmp = listeactuel->content;
-	while ((!(ft_strchr(tmp, '\n'))) && (r = read(fd, buffer, BUFF_SIZE)))
-	{
-		buffer[r] = '\0';
-		if (!(tmp = ft_strfjoin(tmp, buffer)))
-			return (-1);
-	}
-	if (*tmp == '\0')
-		return (0);
-	*line = ft_strsub(tmp, 0, ft_strlen_ligne(tmp));
-	if (ft_strlen(tmp) == ft_strlen_ligne(tmp))
-		listeactuel->content = ft_strdup(tmp + ft_strlen_ligne(tmp));
-	else
-		listeactuel->content = ft_strdup(tmp + ft_strlen_ligne(tmp) + 1);
+	tmp = rest;
+	rest = new_line(rest);
 	free(tmp);
-	return (1);
+	return (rest);
+}
+
+int		get_next_line(const int fd, char **line)
+{
+	int			ret;
+	char		buf[BUFF_SIZE + 1];
+	static char	*rest;
+
+	if (fd < 0 || !line)
+		return (-1);
+	ret = 0;
+	rest = start_line(rest);
+	while (!(ft_strchr(rest, '\n'))
+			&& ((ret = read(fd, buf, BUFF_SIZE)) > 0))
+	{
+		buf[ret] = '\0';
+		rest = ft_strjoin_free(rest, buf, 1);
+	}
+	if (ret == -1)
+	{
+		ft_strclr(rest);
+		return (-1);
+	}
+	(*line) = ft_strsub(rest, 0, len_line(rest));
+	ret = ft_strlen(rest);
+	rest = free_line(rest);
+	if (len_line(*line))
+		return (1);
+	return (ret > 0 ? 1 : 0);
 }

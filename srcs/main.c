@@ -74,8 +74,10 @@ void		build_list(int fd, t_list **list)
 			}
 			i = 0;
 		}
-		if (ret == 0)
+		if (ret == 0) {
+			free(line);
 			return ;
+		}
 	}
 }
 
