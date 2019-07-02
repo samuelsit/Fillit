@@ -73,6 +73,7 @@ int		check_tet(int fd)
 			line_tet = NULL;
 		}
 	}
+	free(line_tet);
 	if (!(line(l)))
 		put_error();
 	return (1);
