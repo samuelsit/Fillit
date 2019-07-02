@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include "libft.h"
 
-t_list	*ft_lst_tetris(t_tetris *tetris, size_t content_size)
+t_list	*lst_tetris(t_tetris *tetris, size_t content_size)
 {
 	t_list	*list;
 

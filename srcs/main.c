@@ -63,12 +63,12 @@ void		build_list(int fd, t_list **list)
 			}
 			if (!(*list))
 			{
-				*list = ft_lstnew(tetris, sizeof(*tetris));
+				*list = lst_tetris(tetris, sizeof(*tetris));
 				tmp = *list;
 			}
 			else
 			{
-				tmp->next = ft_lstnew(tetris, sizeof(*tetris));
+				tmp->next = lst_tetris(tetris, sizeof(*tetris));
 				tmp = tmp->next;
 			}
 			i = 0;
