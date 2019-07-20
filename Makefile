@@ -6,9 +6,10 @@ SRC	=	srcs/main.c		\
 		srcs/clean_list2.c	\
 		srcs/resolve.c		\
 		srcs/free.c		\
-		srcs/list_tetris.c
+		srcs/list_tetris.c	\
+		srcs/build_list.c
 
-CC	=	gcc -g3
+CC	=	gcc
 
 NAME	=	fillit
 

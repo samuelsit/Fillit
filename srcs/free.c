@@ -6,7 +6,7 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 01:09:47 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/06/18 02:33:17 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/07/03 10:45:12 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	free_map(t_map *map)
 	map = NULL;
 }
 
-void	free_array(char	**arr)
+void	free_array(char **arr)
 {
 	int i;
 

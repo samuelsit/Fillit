@@ -6,11 +6,20 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 16:09:57 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/06/08 01:09:38 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/07/03 12:08:48 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
+
+void	check_error(int argc)
+{
+	if (argc != 2)
+	{
+		ft_putstr("usage: ./fillit <file>\n");
+		exit(0);
+	}
+}
 
 void	put_error(void)
 {

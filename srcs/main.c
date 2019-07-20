@@ -6,7 +6,7 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 15:00:42 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/06/18 00:30:34 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/07/03 14:19:11 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,76 +35,21 @@ t_tetris	*new_tetris(int width, int height)
 	return (tetris);
 }
 
-void		build_list(int fd, t_list **list)
+int			do_open(char **argv)
 {
-	t_list		*tmp;
-	t_tetris	*tetris;
-	char		*line;
-	int			ret;
-	int			i;
+	int fd;
 
-	i = 0;
-	while ((ret = get_next_line(fd, &line)) >= 0)
-	{
-		if (line && *line && ret == 1)
-		{
-			if ((i % 5) == 0)
-				tetris = new_tetris(SIZE_TETRIS, SIZE_TETRIS);
-			ft_strcpy(tetris->elem[i], line);
-			free(line);
-			line = NULL;
-			i++;
-		}
-		else
-		{
-			if (line)
-			{
-				free(line);
-				line = NULL;
-			}
-			if (!(*list))
-			{
-				*list = lst_tetris(tetris, sizeof(*tetris));
-				tmp = *list;
-			}
-			else
-			{
-				tmp->next = lst_tetris(tetris, sizeof(*tetris));
-				tmp = tmp->next;
-			}
-			i = 0;
-		}
-		if (ret == 0) {
-			free(line);
-			return ;
-		}
-	}
-}
-
-int			main(int argc, char **argv)
-{
-	t_list	*list;
-	int		fdcheck;
-	int		fd;
-	int		size_map;
-	t_map	*map;
-	t_map	*res;
-
-	list = NULL;
-	if (argc != 2)
-	{
-		ft_putstr("usage: ./fillit <file>\n");
-		return (0);
-	}
-	if ((fdcheck = open(argv[1], O_RDONLY)) < 0)
-		put_error();
-	if (!check_tet(fdcheck))
-		put_error();
-	close(fdcheck);
 	if ((fd = open(argv[1], O_RDONLY)) < 0)
 		put_error();
-	build_list(fd, &list);
-	close(fd);
+	return (fd);
+}
+
+void		fillit(t_list *list)
+{
+	t_map	*map;
+	t_map	*res;
+	int		size_map;
+
 	size_map = ft_sqrt(apply_on_list(list) * 4);
 	map = create_map(size_map);
 	clean_list(&list);
@@ -117,5 +62,26 @@ int			main(int argc, char **argv)
 	print_map(res);
 	free_map(res);
 	free_list(list);
+}
+
+int			main(int argc, char **argv)
+{
+	t_list		*list;
+	t_tetris	*tetris;
+	char		*line;
+	int			fd;
+
+	list = NULL;
+	tetris = NULL;
+	line = NULL;
+	check_error(argc);
+	fd = do_open(argv);
+	if (!check_tet(fd))
+		put_error();
+	close(fd);
+	fd = do_open(argv);
+	build_list(fd, &list, tetris, line);
+	close(fd);
+	fillit(list);
 	return (0);
 }

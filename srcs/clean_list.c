@@ -6,7 +6,7 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/08 01:10:02 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/06/18 02:33:20 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/07/03 12:11:48 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int			get_height(char **elem)
 	return (new_height);
 }
 
-char	**new_malloc(t_tetris *tetris)
+char		**new_malloc(t_tetris *tetris)
 {
 	int		i;
 	int		begin_height;
@@ -80,21 +80,13 @@ char	**new_malloc(t_tetris *tetris)
 	char	**new;
 
 	i = 0;
-	if (!(new = malloc(sizeof(char*) * (tetris->height + 1))))
-		return (NULL);
-	while (i < tetris->height)
-	{
-		if (!(new[i] = malloc(sizeof(char) * (tetris->width + 1))))
-			return (NULL);
-		i++;
-	}
-	i = 0;
+	new = new_array(tetris);
 	begin_height = len_height_filled(tetris->elem);
 	begin_width = len_width_filled(tetris->elem);
 	while (i < tetris->height)
 	{
-		new[i] = ft_strncpy(new[i], &tetris->elem[begin_height + i][begin_width],
-						tetris->width);
+		new[i] = ft_strncpy(new[i],
+				&tetris->elem[begin_height + i][begin_width], tetris->width);
 		new[i][tetris->width] = '\0';
 		i++;
 	}
@@ -103,7 +95,7 @@ char	**new_malloc(t_tetris *tetris)
 	return (new);
 }
 
-void	clean_list(t_list **list)
+void		clean_list(t_list **list)
 {
 	t_tetris	*tetris;
 	t_list		*tmp;

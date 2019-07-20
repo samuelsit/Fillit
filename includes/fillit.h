@@ -6,7 +6,7 @@
 /*   By: ssitruk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 17:24:49 by ssitruk           #+#    #+#             */
-/*   Updated: 2019/06/18 01:38:52 by ssitruk          ###   ########.fr       */
+/*   Updated: 2019/07/03 14:08:16 by ssitruk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ typedef struct	s_tetris
 	int		height;
 }				t_tetris;
 
+void			build_list(int fd, t_list **list, t_tetris *tetris, char *line);
+char			**new_array(t_tetris *tetris);
+void			check_error(int argc);
 t_list			*lst_tetris(t_tetris *tetris, size_t content_size);
 void			free_array(char	**arr);
 t_tetris		*new_tetris(int width, int height);
